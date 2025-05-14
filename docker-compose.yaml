@@ -1,0 +1,16 @@
+services:
+  tmodloader:
+    image: hexlo/terraria-tmodloader-server:latest
+    container_name: tmodloader
+    ports:
+      - "7777:7777/tcp"
+    volumes:
+      - ./tmod_data:/root/.local/share/Terraria
+    environment:
+      - WORLD_NAME=Los homosapiens
+      - WORLD_SIZE=3            # 1 = Small, 2 = Medium, 3 = Large
+      - WORLD_DIFFICULTY=2      # 0 = Normal, 1 = Expert, 2 = Master, 3 = Journey
+      - MAX_PLAYERS=10
+      - PASSWORD=servidor
+      - MOTD=puto el que lo vea
+    restart: unless-stopped

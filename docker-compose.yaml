@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  tmodloader:
+    image: ryanfortner/tmodloader:latest
+    container_name: tmodloader-server
+    ports:
+      - "7777:7777"
+    volumes:
+      - tmodloader-data:/tmodloader
+    environment:
+      - WORLD_NAME=Los homosapiens
+      - WORLD_SIZE=3             # 1=small, 2=medium, 3=large
+      - WORLD_DIFFICULTY=2       # 0=normal, 1=expert, 2=master, 3=journey
+      - MAXPLAYERS=8
+      - PASSWORD=servidor
+      - AUTOCREATE=1
+    restart: unless-stopped
+
+volumes:
+  tmodloader-data:
